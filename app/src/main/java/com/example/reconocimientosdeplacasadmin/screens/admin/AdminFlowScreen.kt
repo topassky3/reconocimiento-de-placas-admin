@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun AdminFlowScreen(modifier: Modifier = Modifier) {
-    // Variable que gestiona la pantalla actual ("home", "agregar" o "verEstado")
+    // Variable que gestiona la pantalla actual: "home", "agregar", "verEstado" y "historico"
     var currentScreen by remember { mutableStateOf("home") }
 
     when (currentScreen) {
@@ -17,20 +17,19 @@ fun AdminFlowScreen(modifier: Modifier = Modifier) {
             modifier = modifier,
             onAgregarPersona = { currentScreen = "agregar" },
             onVerPersonas = { currentScreen = "verEstado" },
-            onConsultarHistoricos = {
-                // Acción para "Consultar históricos" (puedes implementarlo más adelante)
-            }
+            onConsultarHistoricos = { currentScreen = "historico" }
         )
         "agregar" -> AgregarPersonaScreen(
             modifier = modifier,
-            onGuardar = {
-                // Después de guardar, volvemos al menú principal.
-                currentScreen = "home"
-            }
+            onGuardar = { currentScreen = "home" }
         )
         "verEstado" -> VerEstadoVehiculoScreen(
             modifier = modifier,
-            onVolver = { currentScreen = "home" }  // Botón "Volver" para regresar al menú.
+            onVolver = { currentScreen = "home" }
+        )
+        "historico" -> ConsultaHistoricoPlacaScreen(
+            modifier = modifier,
+            onVolver = { currentScreen = "home" }
         )
     }
 }
