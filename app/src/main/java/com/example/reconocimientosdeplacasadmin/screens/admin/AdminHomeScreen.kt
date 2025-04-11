@@ -3,12 +3,9 @@ package com.example.reconocimientosdeplacasadmin.ui.screens.admin
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +22,7 @@ fun AdminHomeScreen(
     onAgregarPersona: () -> Unit,
     onVerPersonas: () -> Unit,
     onConsultarHistoricos: () -> Unit,
+    onLogout: () -> Unit,   // Nuevo callback para cerrar sesión
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -36,6 +34,15 @@ fun AdminHomeScreen(
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
+                },
+                actions = {
+                    // Icono para cerrar sesión
+                    IconButton(onClick = onLogout) {
+                        Icon(
+                            imageVector = Icons.Filled.ExitToApp,
+                            contentDescription = "Cerrar Sesión"
+                        )
+                    }
                 }
             )
         },
@@ -104,7 +111,8 @@ fun AdminHomeScreenPreview() {
         AdminHomeScreen(
             onAgregarPersona = { /* Acción: navegar a Agregar Persona */ },
             onVerPersonas = { /* Acción: navegar a Ver estado del vehículo */ },
-            onConsultarHistoricos = { /* Acción: consultar históricos */ }
+            onConsultarHistoricos = { /* Acción: consultar históricos */ },
+            onLogout = { /* Acción: cerrar sesión y navegar al Login */ }
         )
     }
 }

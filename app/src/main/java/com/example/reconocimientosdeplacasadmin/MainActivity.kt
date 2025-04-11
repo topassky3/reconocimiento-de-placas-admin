@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.reconocimientosdeplacasadmin.ui.screens.admin.AdminFlowScreen
+import com.example.reconocimientosdeplacasadmin.ui.screens.AppFlowScreen
 import com.example.reconocimientosdeplacasadmin.ui.theme.ReconocimientosDePlacasAdminTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReconocimientosDePlacasAdminTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AdminFlowScreen(modifier = Modifier.fillMaxSize())
+                    AppFlowScreen(modifier = Modifier.fillMaxSize())
                 }
             }
         }
@@ -30,6 +30,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityPreview() {
     ReconocimientosDePlacasAdminTheme {
-        AdminFlowScreen(modifier = Modifier.fillMaxSize())
+        AppFlowScreen(modifier = Modifier.fillMaxSize())
     }
 }
